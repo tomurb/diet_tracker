@@ -26,6 +26,8 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: sudo apt-get install ruby-full cmake
+
       - run:
           name: install dependencies
           command: |
@@ -39,6 +41,11 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
 #      - run: bundle exec rake db:schema:load
+
+      # Code quality control
+      - run:
+          name: Pronto - code quality(rubocop, reek, brakeman)
+          command: PRONTO_PULL_REQUEST_ID=${CI_PULL_REQUEST##*/} bundle exec pronto run -f github_pr -c origin/master
 
       # run tests!
       - run:

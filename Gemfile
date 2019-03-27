@@ -56,6 +56,12 @@ group :development do
 
   gem 'rubocop', require: false
   gem 'brakeman'
+  gem 'reek'
+
+  gem 'pronto'
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-reek', require: false
 end
 
 group :test do
