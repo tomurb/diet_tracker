@@ -1,0 +1,4 @@
+export GITHUB_ACCESS_TOKEN=cf8243e722420d7cd65638b54c0b1fa51f77dbeb
+export PULL_REQUEST_URL=${CI_PULL_REQUEST}
+export PULL_REQUEST_ID=`echo $PULL_REQUEST_URL | grep -o -E ‘[0–9]+$’ | head -1 | sed -e ‘s/^0\+//’`
+((bin/bundle exec pronto run -f github_pr -c origin/master)) || true
