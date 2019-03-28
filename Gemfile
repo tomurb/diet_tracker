@@ -54,14 +54,13 @@ group :development do
   gem 'bullet'
   gem 'rack-mini-profiler'
 
-  gem 'rubocop', require: false
-  gem 'brakeman'
-  gem 'reek'
-
+  # Code quality
   gem 'pronto'
-  gem 'pronto-rubocop', require: false
+  gem 'pronto-rubocop',  require: false
   gem 'pronto-brakeman', require: false
   gem 'pronto-reek', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-scss', require: false
 end
 
 group :test do
