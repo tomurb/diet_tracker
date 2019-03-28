@@ -119,6 +119,12 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
+    haml_lint (0.28.0)
+      haml (>= 4.0, < 5.1)
+      rainbow
+      rake (>= 10, < 13)
+      rubocop (>= 0.50.0)
+      sysexits (~> 1.1)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -182,12 +188,18 @@ GEM
     pronto-brakeman (0.10.0)
       brakeman (>= 3.2.0)
       pronto (~> 0.10.0)
+    pronto-haml (0.10.0)
+      haml_lint (~> 0.23)
+      pronto (~> 0.10.0)
     pronto-reek (0.10.0)
       pronto (~> 0.10.0)
       reek (>= 4.2, < 6.0)
     pronto-rubocop (0.10.0)
       pronto (~> 0.10.0)
       rubocop (~> 0.50, >= 0.49.1)
+    pronto-scss (0.10.0)
+      pronto (~> 0.10.0)
+      scss_lint (~> 0.43, >= 0.43.0)
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.1)
@@ -280,6 +292,9 @@ GEM
     sawyer (0.8.1)
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
+    scss_lint (0.57.1)
+      rake (>= 0.9, < 13)
+      sass (~> 3.5, >= 3.5.5)
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -302,6 +317,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
+    sysexits (1.2.0)
     temple (0.8.1)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -340,7 +356,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
-  brakeman
   bullet
   byebug
   capybara (>= 2.15)
@@ -354,14 +369,14 @@ DEPENDENCIES
   mini_racer
   pronto
   pronto-brakeman
+  pronto-haml
   pronto-reek
   pronto-rubocop
+  pronto-scss
   puma (~> 3.11)
   rack-mini-profiler
   rails (~> 5.2.2, >= 5.2.2.1)
-  reek
   rspec-rails (~> 3.8)
-  rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov
