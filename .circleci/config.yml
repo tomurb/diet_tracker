@@ -44,7 +44,7 @@ jobs:
 
       # Code quality control
       - run:
-          name: Pronto - code quality(rubocop, reek, brakeman)
+          name: Pronto - code quality
           command: PRONTO_PULL_REQUEST_ID=${CI_PULL_REQUEST##*/} bundle exec pronto run -f github_pr -c origin/master
 
       # run tests!

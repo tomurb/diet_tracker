@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title DietTracker
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .account_management
+      -if current_user
+        =link_to('Sign out', destroy_user_session_path, method: :delete)
+        =link_to('My account', users_show_path)
+      -else
+        =link_to('Sign in', new_user_session_path)
+        =link_to('Sign up', new_user_registration_path)
+    = yield

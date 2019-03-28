@@ -54,14 +54,13 @@ group :development do
   gem 'bullet'
   gem 'rack-mini-profiler'
 
-  gem 'rubocop', require: false
-  gem 'brakeman'
-  gem 'reek'
-
+  # Code quality
   gem 'pronto'
-  gem 'pronto-rubocop', require: false
+  gem 'pronto-rubocop',  require: false
   gem 'pronto-brakeman', require: false
   gem 'pronto-reek', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-scss', require: false
 end
 
 group :test do
@@ -75,3 +74,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'haml', '~> 5.0.4'
+gem 'haml-rails', '~> 2.0'
+gem 'devise'
