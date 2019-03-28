@@ -1,0 +1,5 @@
+%h1 Biometrics#show
+%p Find me in app/views/biometrics/show.html.haml
+%div
+  =current_user.biometric&.attributes&.map { |k, v| content_tag(:div, "#{k}: #{v}") }
+  =link_to('Edit personal data', edit_biometrics_path)
