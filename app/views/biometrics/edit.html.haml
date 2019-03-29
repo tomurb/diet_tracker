@@ -1,8 +1,8 @@
 %h1 Biometrics#edit
 %p Find me in app/views/biometrics/edit.html.haml
-=form_for @biometric do |f|
+=form_for @biometric, url: biometrics_path do |f|
   =f.label :gender
-  =f.text_field :gender
+  =f.select :gender, Biometric.genders.to_a
   =f.label :age
   =f.number_field :age
   =f.label :height

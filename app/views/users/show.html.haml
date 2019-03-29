@@ -1,3 +1,8 @@
 %h1 Users#show
 %p Find me in app/views/users/show.html.haml
 =link_to('Deletee account', user_registration_path, method: :delete)
+%div
+  -@biometric&.attributes&.each do |k, v|
+    %div="#{k}: #{v}"
+  %div="bmi: #{@bmi}"
+  =link_to('Edit personal data', edit_biometrics_path)

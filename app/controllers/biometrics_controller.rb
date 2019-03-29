@@ -9,10 +9,6 @@ class BiometricsController < ApplicationController
     end
   end
 
-  def show
-    @biometric = current_user.biometric
-  end
-
   def edit
     @biometric = current_user.biometric || Biometric.new
   end

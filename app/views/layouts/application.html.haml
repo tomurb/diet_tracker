@@ -11,8 +11,11 @@
     .flash_messages
       -flash.each do |type, messages|
         .flash{class: "#{type}"}
-          -messages.each do |message|
-            %div=message
+          -if messages.is_a? Array
+            -messages.each do |message|
+              %div=message
+          -else
+            %div=messages
 
     .account_management
       -if current_user

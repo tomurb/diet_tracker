@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_073113) do
 
   create_table "biometrics", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "gender"
+    t.integer "gender"
     t.integer "age"
     t.integer "weight"
     t.integer "height"
