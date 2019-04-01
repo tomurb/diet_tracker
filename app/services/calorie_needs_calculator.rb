@@ -4,7 +4,7 @@ class CalorieNeedsCalculator
   def initialize(biometric)
     @gender = biometric.gender
     @age = biometric.age
-    @weight = biometric.height
+    @weight = biometric.weight
   end
 
   def call
@@ -25,7 +25,7 @@ class CalorieNeedsCalculator
     when 10..17
       17.5 * weight + 651
     when 18..29
-      14.7 * weight + 496
+      15.3 * weight + 679
     when 30..60
       8.7 * weight + 829
     else

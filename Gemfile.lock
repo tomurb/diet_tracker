@@ -366,7 +366,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  devise
+  devise (~> 4.6.2)
   factory_bot_rails (~> 5.0.1)
   haml (~> 5.0.4)
   haml-rails (~> 2.0)

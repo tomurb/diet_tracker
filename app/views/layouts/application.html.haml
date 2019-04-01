@@ -18,7 +18,7 @@
             %div=messages
 
     .account_management
-      -if current_user
+      -if current_user.__getobj__
         =link_to('Sign out', destroy_user_session_path, method: :delete)
         =link_to('My account', users_show_path)
       -else

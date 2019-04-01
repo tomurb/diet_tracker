@@ -14,6 +14,9 @@ class BiometricsController < ApplicationController
   end
 
   def update
+    if current_user.biometric.update(biometrics_params)
+      redirect_to users_show_path
+    end
   end
 
   private
