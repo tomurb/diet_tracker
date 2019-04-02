@@ -8,8 +8,17 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .flash_messages
+      -flash.each do |type, messages|
+        .flash{class: "#{type}"}
+          -if messages.is_a? Array
+            -messages.each do |message|
+              %div=message
+          -else
+            %div=messages
+
     .account_management
-      -if current_user
+      -if current_user.__getobj__
         =link_to('Sign out', destroy_user_session_path, method: :delete)
         =link_to('My account', users_show_path)
       -else
