@@ -3,5 +3,5 @@
 =link_to('Deletee account', user_registration_path, method: :delete)
 %ul
   -current_user.presenter_attributes.each do |attr|
-    %li="#{attr}: #{current_user.send(attr)}"
+    %li="#{attr.to_s.humanize}: #{current_user.send(attr)}"
   =link_to('Edit personal data', edit_biometrics_path)
