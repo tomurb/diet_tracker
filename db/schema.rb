@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_073113) do
+ActiveRecord::Schema.define(version: 2019_04_03_085122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,5 +38,14 @@ ActiveRecord::Schema.define(version: 2019_03_29_073113) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weight_logs", force: :cascade do |t|
+    t.bigint "biometric_id"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["biometric_id"], name: "index_weight_logs_on_biometric_id"
+  end
+
   add_foreign_key "biometrics", "users"
+  add_foreign_key "weight_logs", "biometrics"
 end
