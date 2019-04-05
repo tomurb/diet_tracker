@@ -35,7 +35,14 @@ class UserPresenter < SimpleDelegator
   end
 
   def presenter_attributes
-    self.class.instance_methods(false) - [:presenter_attributes]
+    self.class.instance_methods(false) - [:presenter_attributes, :weight_logs_to_chart]
+  end
+
+  def weight_logs_to_chart
+    weight_logs = biometric.weight_logs
+    charted = weight_logs.map{|log| [log.date, log.weight]}
+    charted.last.first.today? ? nil : charted.push([Date.today, nil])
+    charted
   end
 
   private

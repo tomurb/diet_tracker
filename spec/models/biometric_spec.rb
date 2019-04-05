@@ -12,8 +12,8 @@ RSpec.describe Biometric, type: :model do
 
   describe '#update' do
     it 'calls WeightHistory.update_last_or_create with weight' do
-      expect(WeightLog).to receive(:update_last_or_create).with(biometric.weight)
       biometric.save!
+      expect(WeightLog).to receive(:update_last_or_create).with(biometric.weight)
       biometric.update!(biometric.attributes)
     end
   end
