@@ -17,7 +17,7 @@ class WeightLogsToChartData
 
   def add_empty_on_ends(charted)
     charted.append([@to, nil]) unless charted.last&.first&.today?
-    charted.prepend([@from, nil]) unless charted.first.first.nil?
+    charted.prepend([@from, nil]) if charted.first.first > @from
     charted
   end
 end
