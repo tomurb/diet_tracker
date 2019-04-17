@@ -5,4 +5,10 @@
   -current_user.presenter_attributes.each do |attr|
     %li="#{attr.to_s.humanize}: #{current_user.send(attr)}"
   =link_to('Edit personal data', edit_biometrics_path)
-  =line_chart current_user.weight_logs_to_chart
+  =form_tag(users_show_path, method: 'get') do
+    =label_tag(:from, 'from')
+    =date_field_tag :from, @from
+    =label_tag(:to, 'to')
+    =date_field_tag :to, @to
+    =submit_tag 'Update chart'
+  =line_chart current_user.weight_logs_to_chart(@from, @to)
