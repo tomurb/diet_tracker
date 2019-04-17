@@ -41,7 +41,7 @@ class UserPresenter < SimpleDelegator
   def weight_logs_to_chart(from, to)
     to = [to.to_date, Date.today].min
     weight_logs = biometric.weight_logs.where(date: from.to_date..to)
-    charted = weight_logs.map{|log| [log.date, log.weight]}
+    charted = weight_logs.pluck(:date, :weight)
     add_empty_on_ends(charted, from, to)
   end
 
