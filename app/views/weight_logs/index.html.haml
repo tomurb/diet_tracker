@@ -1,0 +1,8 @@
+=form_tag(weight_logs_path, method: 'get') do
+  =label_tag(:from, 'from')
+  =date_field_tag :from, @from
+  =label_tag(:to, 'to')
+  =date_field_tag :to, @to
+  =submit_tag 'Update chart', data: { disable_with: false }
+  =submit_tag 'CSV', data: { disable_with: false }
+  =line_chart @charted_weight_logs
