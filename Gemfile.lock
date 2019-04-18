@@ -88,6 +88,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     csv (3.0.9)
     descendants_tracker (0.0.4)
@@ -103,6 +104,8 @@ GEM
     equalizer (0.0.11)
     erubi (1.8.0)
     erubis (2.7.0)
+    et-orbi (1.1.8)
+      tzinfo
     execjs (2.7.0)
     factory_bot (5.0.2)
       activesupport (>= 4.2.0)
@@ -112,6 +115,11 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
+    figaro (1.1.1)
+      thor (~> 0.14)
+    fugit (1.1.10)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.1)
     gitlab (4.10.0)
       httparty (~> 0.14, >= 0.14.0)
       terminal-table (~> 1.5, >= 1.5.1)
@@ -176,6 +184,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mustermann (1.0.3)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -211,9 +220,12 @@ GEM
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.1)
+    raabro (1.1.6)
     rack (2.0.6)
     rack-mini-profiler (1.0.2)
       rack (>= 1.2.0)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2.1)
@@ -245,6 +257,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.0)
     reek (5.3.2)
       codeclimate-engine-rb (~> 0.4.0)
       kwalify (~> 0.7.0)
@@ -282,6 +295,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.6)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
+    ruby_http_client (3.3.0)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
     rubyzip (1.2.2)
@@ -306,12 +320,28 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    sendgrid-ruby (5.3.0)
+      ruby_http_client (~> 3.3.0)
+      sinatra (>= 1.4.7, < 3)
     sexp_processor (4.12.0)
+    sidekiq (5.2.6)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
+    sidekiq-cron (1.1.0)
+      fugit (~> 1.1)
+      sidekiq (>= 4.2.1)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    sinatra (2.0.5)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.5)
+      tilt (~> 2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -372,6 +402,7 @@ DEPENDENCIES
   csv
   devise (~> 4.6.2)
   factory_bot_rails (~> 5.0.1)
+  figaro
   haml (~> 5.0.4)
   haml-rails (~> 2.0)
   jbuilder (~> 2.5)
@@ -387,9 +418,13 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-mini-profiler
   rails (~> 5.2.2, >= 5.2.2.1)
+  redis
   rspec-rails (~> 3.8)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sendgrid-ruby
+  sidekiq
+  sidekiq-cron
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

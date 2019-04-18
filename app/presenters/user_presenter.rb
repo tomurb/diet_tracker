@@ -35,7 +35,7 @@ class UserPresenter < SimpleDelegator
   end
 
   def presenter_attributes
-    self.class.instance_methods(false) - [:presenter_attributes, :weight_logs_to_chart]
+    self.class.instance_methods(false) - [:presenter_attributes, :weight_logs_to_chart, :reminding?]
   end
 
   private

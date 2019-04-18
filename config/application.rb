@@ -18,5 +18,7 @@ module DietTracker
     config.generators do |g|
       g.template_engine :haml
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

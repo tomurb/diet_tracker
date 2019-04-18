@@ -4,6 +4,10 @@
 %ul
   -current_user.presenter_attributes.each do |attr|
     %li="#{attr.to_s.humanize}: #{current_user.send(attr)}"
+  %p
+    remind about updating weight:
+    =current_user.reminder.present? ? 'on' : 'off'
+    =reminder_button(current_user)
   =link_to('Edit personal data', edit_biometrics_path)
   =link_to('Weight logs', weight_logs_path)
 
