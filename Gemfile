@@ -71,6 +71,8 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'simplecov', require: false
+
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -86,4 +88,4 @@ gem 'sendgrid-ruby'
 gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-cron'
-
+gem 'awesome_print'

@@ -48,6 +48,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
+    awesome_print (1.8.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -91,6 +92,7 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.4)
     csv (3.0.9)
+    database_cleaner (1.7.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.6.2)
@@ -392,6 +394,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bootsnap (>= 1.1.0)
   bullet
   byebug
@@ -400,6 +403,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   csv
+  database_cleaner
   devise (~> 4.6.2)
   factory_bot_rails (~> 5.0.1)
   figaro
