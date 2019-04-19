@@ -35,12 +35,26 @@ class UserPresenter < SimpleDelegator
   end
 
   def presenter_attributes
-    self.class.instance_methods(false) - [:presenter_attributes]
+    self.class.instance_methods(false) - [:presenter_attributes, :weight_logs_to_chart, :reminding?]
+  end
+
+  def losing_days_number(logs = last_week_weight_logs)
+    weights_array = logs.order(:date).pluck(:weight)
+    weights_array.chunk_while{|i,j| i <= j}.to_a.size - 1
+  end
+
+  def gaining_days_number(logs = last_week_weight_logs)
+    weights_array = logs.order(:date).pluck(:weight)
+    weights_array.chunk_while{|i,j| i >= j}.to_a.size - 1
   end
 
   private
 
   def _calorie_needs
     Calculators::CalorieNeedsCalculator.new(biometric).call
+  end
+
+  def last_week_weight_logs
+    WeightLogsQuery.new(biometric.weight_logs).last_week.relation
   end
 end
