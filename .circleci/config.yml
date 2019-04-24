@@ -63,8 +63,19 @@ jobs:
           POSTGRES_PASSWORD: ""
 
     steps:
+      - checkout
       # Database setup
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          command: bundle config --local path vendor/bundle
+
       - run: bundle exec rake db:create
 #      - run: bundle exec rake db:schema:load
 
@@ -89,3 +100,12 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
