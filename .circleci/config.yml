@@ -8,6 +8,8 @@ jobs:
     working_directory: ~/diet_tracker
     docker:
       # specify the version you desire here
+#      - image: circleci/ruby:2.6.0-stretch
+#      - image: circleci/postgres:11.2-alpine
       - image: circleci/ruby:2.6.0-stretch
         environment:
           PGHOST: localhost
@@ -47,22 +49,6 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-  test:
-    working_directory: ~/diet_tracker
-    docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.6.0-stretch
-        environment:
-          PGHOST: localhost
-          PGUSER: diet_tracker
-          RAILS_ENV: test
-      - image: circleci/postgres:11.2-alpine
-        environment:
-          POSTGRES_USER: diet_tracker
-          POSTGRES_DB: diet_tracker_test
-          POSTGRES_PASSWORD: ""
-
-    steps:
       # Database setup
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: bundle exec rake db:create
