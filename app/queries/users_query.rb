@@ -10,6 +10,7 @@ class UsersQuery
   end
 
   def out_of_date_biometric
+    puts 'x'
    self.class.new(
      @relation.joins(:biometric)
               .where('biometrics.updated_at < :today', today: Date.today)

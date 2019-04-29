@@ -6,7 +6,11 @@
   = submit_tag 'Update chart', data: { disable_with: false }
   = submit_tag 'CSV', data: { disable_with: false }
 = line_chart @charted_weight_logs
-= @charted_weight_logs
+
+%p
+  your tendency breaks:
+  = local_maxima_and_minima(@from..@to, current_user.biometric)
+
 = form_for WeightLog.new do |f|
   = f.label :date
   = f.date_field :date
