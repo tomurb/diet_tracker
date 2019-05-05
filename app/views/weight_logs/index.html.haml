@@ -4,7 +4,7 @@
   = label_tag(:to, 'to')
   = date_field_tag :to, @to
   = submit_tag 'Update chart', data: { disable_with: false }
-  = submit_tag 'CSV', data: { disable_with: false }
+  = submit_tag 'CSV', data: { disable_with: false }, formaction: weight_logs_path('csv')
 = line_chart @charted_weight_logs
 
 %p
@@ -19,10 +19,10 @@
   = f.submit
 
 - @weight_logs.each do |log|
-  = form_for log do |f|
-    = f.label :date
-    = f.date_field :date
-    = f.label :weight
-    = f.number_field :weight
-    = f.submit
+  = form_for log do |form|
+    = form.label :date
+    = form.date_field :date
+    = form.label :weight
+    = form.number_field :weight
+    = form.submit
   = button_to :delete, weight_log_path(log), method: 'delete'
