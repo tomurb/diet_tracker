@@ -1,7 +1,7 @@
 directories:
+  IrresponsibleModule:
+    enabled: false
   "app/controllers":
-    IrresponsibleModule:
-      enabled: false
     NestedIterators:
       max_allowed_nesting: 2
     UnusedPrivateMethod:
