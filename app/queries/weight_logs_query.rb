@@ -12,7 +12,6 @@ class WeightLogsQuery
   end
 
   def between(from, to)
-    raise WrongDatesOrder if from > to
 
     self.class.new(
       @relation.where(date: from..to)
