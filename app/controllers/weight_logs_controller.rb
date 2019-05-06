@@ -3,13 +3,9 @@ class WeightLogsController < ApplicationController
     @weight_logs = current_user.biometric.weight_logs.order(:date)
     @from = from
     @to = to
-    if @from > @to
-      handle_wrong_dates
-    else
-      respond_to do |format|
-        format.html { handle_html_index }
-        format.csv { handle_csv_index }
-      end
+    respond_to do |format|
+      format.html { handle_html_index }
+      format.csv { handle_csv_index }
     end
   end
 
@@ -40,13 +36,14 @@ class WeightLogsController < ApplicationController
     send_data weight_logs_csv_data, filename: csv_filename
   end
 
-  def handle_wrong_dates
-    flash.now[:error] = 'From should not be later than to'
-    render template: 'weight_logs/index.html'
+  def wrong_dates_order
+    flash[:error] = 'From should not be later than to'
+    redirect_back fallback_location: root_path, params: { from: @from, to: @to }
   end
 
   def weight_logs_csv_data
-    ::WeightLogsToCsv.new(@weight_logs.where(date: @from..@to)).call
+    query = WeightLogsQuery.new(@weight_logs)
+    ::WeightLogsToCsv.new(query.between(@from, @to).relation).call
   end
 
   def weight_log_params
