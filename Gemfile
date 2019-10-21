@@ -80,7 +80,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml', '~> 5.0.4'
 gem 'haml-rails', '~> 2.0'
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
 gem 'chartkick'
 gem 'csv'
 gem 'figaro'
